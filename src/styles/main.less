@@ -1,0 +1,193 @@
+@pixel-size: 4px;
+@primary-color: #ff6b6b;
+@secondary-color: #4ecdc4;
+@background-color: #1a1a2e;
+@text-color: #ffffff;
+
+.pixel-border(@color: @primary-color, @size: @pixel-size) {
+    border: @size solid @color;
+    box-shadow: 
+        @size @size 0 0 @color,
+        -@size -@size 0 0 @color,
+        @size -@size 0 0 @color,
+        -@size @size 0 0 @color;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: @background-color;
+    color: @text-color;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: darken(@background-color, 5%);
+    padding: @pixel-size * 4;
+
+    nav {
+        ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+
+            li {
+                margin: 0 @pixel-size * 4;
+
+                a {
+                    color: @text-color;
+                    text-decoration: none;
+                    font-size: @pixel-size * 3;
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: @primary-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: @pixel-size * 4;
+}
+
+.buy-button {
+    background-color: @primary-color;
+    color: @text-color;
+    border: none;
+    padding: @pixel-size * 2 @pixel-size * 4;
+    font-family: 'Press Start 2P', cursive;
+    font-size: @pixel-size * 3;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    .pixel-border(darken(@primary-color, 10%));
+
+    &:hover {
+        background-color: lighten(@primary-color, 10%);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.hero {
+    text-align: center;
+    padding: @pixel-size * 16 0;
+
+    h1 {
+        font-size: @pixel-size * 12;
+        margin-bottom: @pixel-size * 4;
+        color: @primary-color;
+    }
+
+    p {
+        font-size: @pixel-size * 4;
+    }
+}
+
+.about {
+    background-color: lighten(@background-color, 5%);
+    padding: @pixel-size * 8;
+    margin: @pixel-size * 8 0;
+    .pixel-border();
+
+    h2 {
+        color: @secondary-color;
+        font-size: @pixel-size * 6;
+        margin-bottom: @pixel-size * 4;
+    }
+}
+
+.game-list {
+    h2 {
+        text-align: center;
+        font-size: @pixel-size * 8;
+        margin-bottom: @pixel-size * 8;
+        color: @secondary-color;
+    }
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: @pixel-size * 8;
+    justify-items: center;
+}
+
+.game-item {
+    background-color: lighten(@background-color, 10%);
+    padding: @pixel-size * 4;
+    text-align: center;
+    .pixel-border(@secondary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: @pixel-size * 4;
+        image-rendering: pixelated;
+    }
+
+    h3 {
+        font-size: @pixel-size * 4;
+        margin-bottom: @pixel-size * 2;
+        max-width: 200px;
+        word-wrap: break-word;
+    }
+
+    p {
+        font-size: @pixel-size * 3;
+        color: @primary-color;
+    }
+}
+
+footer {
+    background-color: darken(@background-color, 5%);
+    padding: @pixel-size * 8 0;
+    margin-top: @pixel-size * 16;
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    h3 {
+        color: @secondary-color;
+        font-size: @pixel-size * 4;
+        margin-bottom: @pixel-size * 4;
+    }
+
+    p, a {
+        font-size: @pixel-size * 3;
+    }
+
+    .social-icon {
+        display: block;
+        color: @text-color;
+        text-decoration: none;
+        margin-bottom: @pixel-size * 2;
+        transition: color 0.3s;
+
+        &:hover {
+            color: @primary-color;
+        }
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: @pixel-size * 8;
+        font-size: @pixel-size * 2;
+    }
+}
